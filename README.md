@@ -65,7 +65,9 @@ including data,
              . Save the best model.
      
       > Classification algorithm.
-           -
+          - Logistic regression.
+               . This is a machine learning binary classification algorithm that is used to predict the probability of a categorical dependent variable.  
+           
       > Benefits of parameter sampler.
           - RandomParameterSampling.
               . It hepls to avoid bias.
