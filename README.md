@@ -45,16 +45,17 @@ This model is then compared to an Azure AutoML run.
              . Dictionary for cleaning data.
              . OneHotEncoder processing technique applied to the dataframe.
              . Split the data into train sets(80%) and test sets(20%).
-             . Argument parser construction to parse arguments.
-             . Logistic regression model that tests for accuracy.
+             . Argument parser construction to parse the arguments (--C: Regularization strength, --max_iter: Maximum number of iterations taken for the solvers to converge.)
+             . Create a logistic regression model that tests for accuracy.
              . Source directory to save the generated custom-coded model
              
-including data, 
+     > Data.
+         -
 
      > Hyperparameter tuning.
          - Build hyperdrive service using jupyter notebook
              . Initialize workspace
-             . Create a compute cluster to run the experiments on and chack for existing cluster.
+             . Create a compute cluster to run the experiments on and check for existing cluster.
              . Specify parameter sampler
              . Specify a policy for early stopping.
              . Create an estimator for the training script.
