@@ -62,25 +62,43 @@ def clean_data(data):
 o	Apply OneHotEncoder processing technique to the dataframe.
 
   Clean and one hot encode data
+    
     x_df = data.to_pandas_dataframe().dropna()
+    
     jobs = pd.get_dummies(x_df.job, prefix="job")
+    
     x_df.drop("job", inplace=True, axis=1)
+    
     x_df = x_df.join(jobs)
+    
     x_df["marital"] = x_df.marital.apply(lambda s: 1 if s == "married" else 0)
+    
     x_df["default"] = x_df.default.apply(lambda s: 1 if s == "yes" else 0)
+    
     x_df["housing"] = x_df.housing.apply(lambda s: 1 if s == "yes" else 0)
+    
     x_df["loan"] = x_df.loan.apply(lambda s: 1 if s == "yes" else 0)
+    
     contact = pd.get_dummies(x_df.contact, prefix="contact")
+    
     x_df.drop("contact", inplace=True, axis=1)
+    
     x_df = x_df.join(contact)
+    
     education = pd.get_dummies(x_df.education, prefix="education")
+    
     x_df.drop("education", inplace=True, axis=1)
+    
     x_df = x_df.join(education)
+    
     x_df["month"] = x_df.month.map(months)
+    
     x_df["day_of_week"] = x_df.day_of_week.map(weekdays)
+    
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+    
     return x_df,y_df
 
 o	Import the bank marketing dataset csv file using the TabularDatasetFactory
@@ -88,6 +106,7 @@ o	Import the bank marketing dataset csv file using the TabularDatasetFactory
   Data is located at: "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
 src= "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+
 ds = TabularDatasetFactory.from_delimited_files(path=src)
 
 o	Use the clean data function to clean the data
@@ -108,14 +127,17 @@ o	Parse arguments (“--C:” Regularization strength and “--max_iter:” Maxi
 
 def main():
     # Add arguments to script
+    
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
+    
     parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
 
     args = parser.parse_args()
 
     run.log("Regularization Strength:", np.float(args.C))
+    
     run.log("Max iterations:", np.int(args.max_iter))
 
 o	Create a logistic regression model that tests for accuracy.
@@ -123,14 +145,17 @@ o	Create a logistic regression model that tests for accuracy.
 model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
     
     accuracy = model.score(x_test, y_test)
+    
     run.log("Accuracy", np.float(accuracy))
 
 o	Create a source directory to save the generated hyperdrive model.
 
 os.makedirs('outputs', exist_ok=True)
+
     joblib.dump(model,"outputs/hyperdrive_model.joblib")
     
 if __name__ == '__main__':
+
     main()
          
  # Data.
