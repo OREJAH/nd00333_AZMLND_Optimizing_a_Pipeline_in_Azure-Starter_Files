@@ -33,7 +33,7 @@ This project is part of the Udacity Azure ML Nanodegree. In this project, we bui
 	The bank marketing dataset contains 32950 instances of client data about bank marketing campaigns that are based on phone calls. We seek to predict if the client will subscribe to a bank term deposit.
 In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."
 
-##Scikit-learn Pipeline
+## Scikit-learn Pipeline
 
     	# Pipeline architecture
            This involves the python training script setup through the following processes below:
