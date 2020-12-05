@@ -61,7 +61,7 @@ def clean_data(data):
 
 o	Apply OneHotEncoder processing technique to the dataframe.
 
-# Clean and one hot encode data
+  Clean and one hot encode data
     x_df = data.to_pandas_dataframe().dropna()
     jobs = pd.get_dummies(x_df.job, prefix="job")
     x_df.drop("job", inplace=True, axis=1)
@@ -96,7 +96,6 @@ x, y = clean_data(ds)
 
 o	Split the dataset into train sets of 80% and test sets of 20%.
 
-#import package
 from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test=train_test_split(x, y, train_size=0.8, test_size=0.2, random_state=42)
@@ -134,10 +133,10 @@ os.makedirs('outputs', exist_ok=True)
 if __name__ == '__main__':
     main()
          
- > Data.
+ # Data.
      -
 
- > Hyperparameter tuning.
+ # Hyperparameter tuning.
      - Build hyperdrive service using jupyter notebook
          . Initialize workspace
          . Create a compute cluster to run the experiments on and check for existing cluster.
@@ -150,17 +149,17 @@ if __name__ == '__main__':
          . Select the best hyperparameters for the custom-coded model.
          . Save the best model.
  
-  > Classification algorithm.
+  # Classification algorithm.
       - Logistic regression.
            . This is a machine learning binary classification algorithm that is used to predict the probability of a categorical dependent variable.  
        
-  > Benefits of parameter sampler.
+  # Benefits of parameter sampler.
       - RandomParameterSampling.
           . It hepls to avoid bias.
           . It chooses the best hyperparameters.
           . It optimizes for speed versus accuracy.
            
-  > Benefits of early stopping policy.
+  # Benefits of early stopping policy.
       - BanditPolicy.
           . It helps to avoid burning up a lot of resources while trying to find an optimal parameter
 AutoML
