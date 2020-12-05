@@ -25,16 +25,21 @@ Table of contents
     
 ## Future work
 
-Project overview
+## Project overview
+
 This project is part of the Udacity Azure ML Nanodegree. In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model. This model is then compared to an Azure AutoML run.
-Summary
+
+## Summary
 	The bank marketing dataset contains 32950 instances of client data about bank marketing campaigns that are based on phone calls. We seek to predict if the client will subscribe to a bank term deposit.
 In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."
-Scikit-learn Pipeline
-	Pipeline architecture
-    This involves the python training script setup through the following processes below:
+
+##Scikit-learn Pipeline
+
+    	# Pipeline architecture
+           This involves the python training script setup through the following processes below:
 
 o	Check for packages needed to be passed on to the script.
+
 from sklearn.linear_model import LogisticRegression
 import argparse
 import os
@@ -80,8 +85,7 @@ o	Apply OneHotEncoder processing technique to the dataframe.
 
 o	Import the bank marketing dataset csv file using the TabularDatasetFactory
 
-# Data is located at:
-# "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+  Data is located at: "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
 src= "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 ds = TabularDatasetFactory.from_delimited_files(path=src)
