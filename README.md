@@ -29,6 +29,28 @@ Table of contents
 
 This project is part of the Udacity Azure ML Nanodegree. In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model. This model is then compared to an Azure AutoML run.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Summary
  The bank marketing dataset contains 32951 instances of client data about bank marketing campaigns that are based on phone calls. We seek to predict if the client will subscribe to a bank term deposit.
 In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."
