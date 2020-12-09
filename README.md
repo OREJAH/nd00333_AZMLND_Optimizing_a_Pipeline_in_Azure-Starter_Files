@@ -36,7 +36,7 @@ In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..
 
 ## Scikit-learn Pipeline
 
-    ### Pipeline architecture.
+### Pipeline architecture.
     
  This involves setting up the python training script through the following processes below:
 
