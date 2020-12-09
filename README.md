@@ -29,7 +29,6 @@ Table of contents
 
 This project is part of the Udacity Azure ML Nanodegree. In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model. This model is then compared to an Azure AutoML run.
 
-![Project Overview](C:\Users\DREX\Pictures\Project Overview.PNG)
 
 
 ## Summary
@@ -38,7 +37,8 @@ In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..
 
 ## Scikit-learn Pipeline
 
- # Pipeline architecture.
+    Pipeline architecture.
+    
  This involves setting up the python training script through the following processes below:
 
 •	Check for packages needed to be passed on to the script.
@@ -105,6 +105,7 @@ def clean_data(data):
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
     
     return x_df,y_df
+    
 
 •	Import the bank marketing dataset csv file using the TabularDatasetFactory
 
@@ -114,9 +115,11 @@ src= "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-noteb
 
 ds = TabularDatasetFactory.from_delimited_files(path=src)
 
+
 •	Use the clean data function to clean the data
 
 x, y = clean_data(ds)
+
 
 •	Split the dataset into train sets of 80% and test sets of 20%.
 
@@ -124,9 +127,11 @@ from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test=train_test_split(x, y, train_size=0.8, test_size=0.2, random_state=42)
 
+
 •	Create a run object in the script to train the hyperdrive model.
 
 run = Run.get_context()
+
 
 •	Parse arguments (“--C:” Regularization strength and “--max_iter:” Maximum number of iterations taken for the solvers to converge.)
 
@@ -144,6 +149,7 @@ def main():
     run.log("Regularization Strength:", np.float(args.C))
     
     run.log("Max iterations:", np.int(args.max_iter))
+    
 
 •	Create a logistic regression model that tests for accuracy.
 
@@ -152,6 +158,7 @@ model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_trai
     accuracy = model.score(x_test, y_test)
     
     run.log("Accuracy", np.float(accuracy))
+    
 
 •	Create a source directory to save the generated hyperdrive model.
 
@@ -163,10 +170,12 @@ if __name__ == '__main__':
 
     main()
          
-# Data.
-The variety of banking services has grown to encompass the growing complexity of services defined as banking services. It includes bank records with 21 observations per record. Each record includes 20 explanatory observations about the client contacted and 1 response (y) observation of whether the client subscribed to a bank term deposit.
+ Data. 
 
- # Hyperparameter tuning.
+The bank marketing dataset includes bank records with 21 observations per record. Each record includes 20 explanatory observations about the client contacted and 1 response (y) observation of whether the client subscribed to a bank term deposit with boolean values(yes or no).
+
+ Hyperparameter tuning.
+ 
  This was done by building a hyperdrive service using jupyter notebook through the following processes:
  
 Initialize the azure machine learning workspace, create a compute cluster to run the experiments on and check for existing cluster, if any existing cluster is found, it will be used for the experiments instead of creating a new cluster.
@@ -181,16 +190,19 @@ max_total_runs=4,
 max_concurrent_runs=4
 )
 
-Submit the hyperdriveconfig and use RunDetails to monitor run progress. Select the best hyperparameters for the hyperdrive model and save the best model.
+Next, submit the HyperDriveConfig and use RunDetails to monitor run progress. Select the best hyperparameters for the hyperdrive model and save the best model.
  
-  # Classification algorithm (Logistic regression).
-  This is a machine learning binary classification algorithm that is used to predict the probability of a categorical dependent variable.
+  Classification algorithm.
+  For the hyperdrive pipeline, logistic regression was the algorithm used. This is a machine learning binary classification algorithm used to predict the probability of a categorical dependent variable.In this case, we'll be getting outputs in boolean form of either yes or no.
   
- # Benefits of parameter sampler (RandomParameterSampling).
- It helps to avoid bias, it chooses the best hyperparameters and also optimizes for speed versus accuracy.
+  Benefits of parameter sampler.
+ In this hyperdrive pipeline, we made use of the random parameter sampling method which helped to avoid bias, choose the best hyperparameters and also optimize for speed versus accuracy.
  
-  # Benefits of early stopping policy (BanditPolicy).
-  It helps to avoid burning up a lot of resources while trying to find an optimal parameter.
+   Benefits of early stopping policy.
+  Lastly, the bandit policy was applied to the hyperdrive pipeline where two arguments was passed,
+  i: 
+  
+  it helps to avoid burning up a lot of resources while trying to find an optimal parameter.
 
  ## AutoML
 In 1-2 sentences, describe the model and hyperparameters generated by AutoML.
