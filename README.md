@@ -196,7 +196,11 @@ Next, submitted the HyperDriveConfig and used RunDetails to monitor run progress
   For the hyperdrive pipeline, logistic regression was the algorithm used. This is a machine learning binary classification algorithm used to predict the probability of a categorical dependent variable.In this case, we'll be getting outputs in boolean form of either yes or no.
   
 ### Benefits of parameter sampler.
- In this hyperdrive pipeline, we made use of the random parameter sampling method which helped to avoid bias, choose the best hyperparameters and also optimize for speed versus accuracy.
+ In this hyperdrive pipeline, I made use of the random parameter sampling method which helped to avoid bias. It chose the best hyperparameters and also optimized for speed versus accuracy. Unlike the grid sampling method that supports discrete hyperparameters, this random sampling method supports both discrete and contionuous hyperparameters, these hyperparameter values are randomly selected from the defined search space, making it very easy to use. So i was able to pass the following hyperparameters:
+ 
+ "--C":uniform(0.05,0.10),
+ 
+ "--max_iter":choice(25,50,75,100) 
  
 ### Benefits of early stopping policy.
   Lastly, the bandit policy was applied to the hyperdrive pipeline and two parameters were passed,
@@ -240,6 +244,6 @@ Some areas of improvement for future experiments are the use of the grid samplin
 
 These improvements might help the model in the following ways:
 
-Grid sampling: It helps in selecting a criteria and choose the best result for the model.
+Grid sampling: It helps in selecting a criteria and choose the best result for the model and it supports early termination of low-performance runs. It performs a simple grid search over all possible values. 
 
 Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter.
