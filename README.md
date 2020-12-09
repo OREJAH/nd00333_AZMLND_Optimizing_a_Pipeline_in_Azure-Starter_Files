@@ -226,7 +226,7 @@ The automl pipeline produced its best performing model known as Voting Ensemble 
 
 #### Pipeline architecture
 
-•	Import the dataset using the tabular dataset factory
+•	Import the dataset using the tabular dataset factory:
 
 from azureml.data.dataset_factory import TabularDatasetFactory
 
@@ -235,7 +235,8 @@ src = https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-noteb
 
 ds= TabularDatasetFactory.from_delimited_files(src)
 
-•	Use the clean data function to clean your data.
+
+•	Use the clean data function to clean your data:
 
 from train import clean_data
 
@@ -243,7 +244,7 @@ from train import clean_data
 x, y = clean_data(ds)
 
 
-•	Split the dataset
+•	Split the dataset:
 
 
 from sklearn.model_selection import train_test_split
@@ -252,7 +253,7 @@ from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test=train_test_split(x, y, train_size=0.8, test_size=0.2, random_state=42)
 
 
-•	Combine the training datasets
+•	Combine the training datasets:
 
 import pandas as pd
 
@@ -283,7 +284,7 @@ train_data = pd.concat((x_train,y_train),axis=1)
     featurization='auto')
 
 
-•	Submit the automl run
+•	Submit the automl run:
 
 automl_run = exp.submit(automl_config, show_output=True)
 
@@ -293,7 +294,7 @@ RunDetails(automl_run).show()
 
 automl_run.wait_for_completion(show_output=True)
 
-•	Retrieve the best run
+•	Retrieve the best run:
 
 best_run, fitted_model = automl_run.get_output()
 
@@ -318,7 +319,7 @@ for metric_name in best_run_metrics:
     print(metric)
 
 
-•	Save the automl model
+•	Save the automl model:
 
 best_run.register_model(model_name='automl_model',model_path='/outputs',properties={'AUC_weighted':best_run_metrics['AUC_weighted']},tags={'Training context':'Auto ML'})
 
