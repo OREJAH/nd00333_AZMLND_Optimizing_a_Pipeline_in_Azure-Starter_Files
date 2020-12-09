@@ -217,6 +217,10 @@ The hyperdrive workflow diagram is seen below:
 
 The automl pipeline produced its best performing model known as Voting Ensemble at the 40th iteration of the experiment with an accuracy of 0.9180576631259484, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.  
 
+The AutoML workflow diagram is seen below:
+
+![automl](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/automl%20workflow.png)
+
 ## Pipeline comparison
 
 ### Comparison (accuracy)
