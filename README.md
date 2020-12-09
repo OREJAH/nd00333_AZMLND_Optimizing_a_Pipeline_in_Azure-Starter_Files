@@ -219,9 +219,51 @@ The hyperdrive workflow diagram is seen below:
 
  ## AutoML 
 
+### Best performing model
 The automl pipeline produced its best performing model known as Voting Ensemble at the 33rd iteration of the experiment with an AUC_weighted value of 0.9496099681514523, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.
 
 ![automl_run](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/automl_run.PNG)
+
+#### Pipeline architecture
+
+•	Import the dataset using the tabular dataset factory
+from azureml.data.dataset_factory import TabularDatasetFactory
+
+src = https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv
+ds= TabularDatasetFactory.from_delimited_files(src)
+
+•	Use the clean data function to clean your data.
+from 	train import clean_data
+x, y = clean_data(ds)
+
+
+•	Split the dataset
+
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test=train_test_split(x, y, train_size=0.8, test_size=0.2, random_state=42)
+
+
+•	Combine the training datasets
+import pandas as pd
+
+train_data = pd.concat((x_train,y_train),axis=1)
+
+
+## Hyperparameters
+
+experiment_timeout_minutes=30,
+    task='classification',
+    primary_metric='AUC_weighted',
+    training_data=train_data,
+    label_column_name='y',
+    n_cross_validations=5,
+    max_concurrent_iterations=4,
+    max_cores_per_iteration=4,
+    enable_early_stopping=True,
+    enable_voting_ensemble=True,
+    featurization='auto')
+
 
 ![iteration](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/iteration%20auto%20ml.PNG)
 
