@@ -196,7 +196,9 @@ Next, submitted the HyperDriveConfig and used RunDetails to monitor run progress
   For the hyperdrive pipeline, logistic regression was the algorithm used. This is a machine learning binary classification algorithm used to predict the probability of a categorical dependent variable.In this case, we'll be getting outputs in boolean form of either yes or no.
   
 ### Benefits of parameter sampler.
- In this hyperdrive pipeline, I made use of the random parameter sampling method which helped to avoid bias. It chose the best hyperparameters and also optimized for speed versus accuracy. Unlike the grid sampling method that supports discrete hyperparameters, this random sampling method supports both discrete and contionuous hyperparameters, these hyperparameter values are randomly selected from the defined search space, making it very easy to use. So i was able to pass the following hyperparameters:
+ In this hyperdrive pipeline, I made use of the random parameter sampling method which helped to avoid bias. You do not have to worry about the run time because you can control the number of parameter searches. It also helps in choosing the best hyperparameters and optimize for speed versus accuracy. Unlike the grid sampling method that supports discrete hyperparameters, this random sampling method supports both discrete and contionuous hyperparameters, these hyperparameter values are randomly selected from the defined search space, making it very easy to use. 
+ 
+ Using the random parameter sampler, I was able to pass the following parameters:
  
  "--C":uniform(0.05,0.10),
  
@@ -242,8 +244,10 @@ AutoML's ability to automatically and efficiently identify the algorithms or mod
 
 Some areas of improvement for future experiments are the use of the grid sampling method and the bayesian sampling method.
 
+
 These improvements might help the model in the following ways:
 
-Grid sampling: It helps in selecting a criteria and choose the best result for the model and it supports early termination of low-performance runs. It performs a simple grid search over all possible values. 
+Grid sampling: It can help in selecting a criteria and choose the best result for the model and it also supports early termination of low-performance runs. It performs a simple grid search over all possible values. Besides, it can provide a thorough sampling of parameter space and you can cover all possible prospective sets of parameters.
 
-Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter.
+
+Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter.It picks samples based on how previous samples performed, so that new samples improve the primary metric and its search is potentially efficient.
