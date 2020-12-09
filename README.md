@@ -208,6 +208,10 @@ Next, submitted the HyperDriveConfig and used RunDetails to monitor run progress
   
 The bandit policy helped to avoid burning up a lot of resources while trying to find an optimal parameter, it terminates any run that does not fall within the slack factor's range.
 
+The hyperdrive workflow diagram is seen below:
+
+)![hyperdrive](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/Hyperdrive%20run.PNG)
+
  ## AutoML 
 
 The automl pipeline produced its best performing model known as Voting Ensemble at the 40th iteration of the experiment with an accuracy of 0.9180576631259484, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.  
@@ -225,7 +229,7 @@ The hyperdrive made use of a python training script to optimize the parameters f
 
 ### Reasons for difference.
 
-
+AutoML's ability to automatically and efficiently identify the algorithms or models that work best for the dataset through an iterative process of several algorithms can be a reason for the difference in accuracy. It is not restricted to just one maching learning algorithm as in the case of hyperparameter tuning.
 
 ## Future work
 
@@ -234,4 +238,5 @@ Some areas of improvement for future experiments are the use of the grid samplin
 These improvements might help the model in the following ways:
 
 Grid sampling: It helps in selecting a criteria and choose the best result for the model.
+
 Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter.
