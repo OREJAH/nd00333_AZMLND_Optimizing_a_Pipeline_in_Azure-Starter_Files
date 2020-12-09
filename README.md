@@ -219,7 +219,7 @@ The hyperdrive workflow diagram is seen below:
 
  ## AutoML 
 
-The automl pipeline produced its best performing model known as Voting Ensemble at the 40th iteration of the experiment with an accuracy of 0.9180576631259484, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.  
+The automl pipeline produced its best performing model known as Voting Ensemble at the 33rd iteration of the experiment with an AUC_weighted value of 0.9496099681514523, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.
 
 The AutoML workflow diagram is seen below:
 
@@ -229,7 +229,7 @@ The AutoML workflow diagram is seen below:
 
 ### Comparison (accuracy)
 
-The hyperdrive service automatically adjusted the hyperparameters, found the best parameters and used them in training the scikit learn logistic regression model with an accuracy of 0.9072837632776934 while the automl model automatically took the data, went through in selecting the best categorical data, including the label and gave a predicting model with an accuracy of 0.9180576631259484. The AutoML has a better model accuracy.
+The hyperdrive service automatically adjusted the hyperparameters, found the best parameters and used them in training the scikit learn logistic regression model with an accuracy of 0.9072837632776934 while the automl model automatically took the data, went through in selecting the best categorical data, including the label and gave a predicting model with an AUC_weighted value of 0.9496099681514523. Therefore, this kind of preprocessing and model tuning is better in AutoML.
 
 ### Difference in architecture:
 
@@ -242,12 +242,10 @@ AutoML's ability to automatically and efficiently identify the algorithms or mod
 
 ## Future work
 
-Some areas of improvement for future experiments are the use of the grid sampling method and the bayesian sampling method.
-
+Some areas of improvement for future experiments are the use of the grid sampling method which supports discrete hyperparameters, early termination of low-performance runs, and also the bayesian sampling method which is based on the Bayesian optimization algorithm that allows for the use of a different kind of statistical technique to improve the kind of hyperparameter.
 
 These improvements might help the model in the following ways:
 
 Grid sampling: It can help in selecting a criteria and choose the best result for the model and it also supports early termination of low-performance runs. It performs a simple grid search over all possible values. Besides, it can provide a thorough sampling of parameter space and you can cover all possible prospective sets of parameters.
 
-
-Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter.It picks samples based on how previous samples performed, so that new samples improve the primary metric and its search is potentially efficient.
+Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter. It picks samples based on how previous samples performed, so that new samples improve the primary metric and its search is potentially efficient.
