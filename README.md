@@ -18,9 +18,8 @@ Table of contents
 ## AutoML
     
 ## Pipelines comparison
-     > Comparison
-     > Differences(accuracy)
-     > Differences(architecture)
+     > Comparison (accuracy)
+     > Difference in architecture
      > Reasons for differences
     
 ## Future work
@@ -211,16 +210,28 @@ The bandit policy helped to avoid burning up a lot of resources while trying to 
 
  ## AutoML 
 
-The automl pipeline produced its best performing model known as Voting Ensemble at the 40th iteration of the experiment, it is a useful technique, which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.  
+The automl pipeline produced its best performing model known as Voting Ensemble at the 40th iteration of the experiment with an accuracy of 0.9180576631259484, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.  
 
 ## Pipeline comparison
 
-Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+### Comparison (accuracy)
 
-Future work
+The hyperdrive service automatically adjusted the hyperparameters, found the best parameters and used them in training the scikit learn logistic regression model with an accuracy of 0.9072837632776934 while the automl model automatically took the data, went through in selecting the best categorical data, including the label and gave a predicting model with an accuracy of 0.9180576631259484. The AutoML has a better model accuracy.
 
-What are some areas of improvement for future experiments? Why might these improvements help the model?
+### Difference in architecture:
 
-Proof of cluster clean up
-If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section. Image of cluster marked for deletion
+The hyperdrive made use of a python training script to optimize the parameters for the logistic regression algorithm and provide its accuracy while the AutoML used several learning algorithms to obtain its accuracy.
 
+
+### Reasons for difference.
+
+
+
+## Future work
+
+Some areas of improvement for future experiments are the use of the grid sampling method and the bayesian sampling method.
+
+These improvements might help the model in the following ways:
+
+Grid sampling: It helps in selecting a criteria and choose the best result for the model.
+Bayesian sampling: It makes it possible to use a different kind of statistical technique to improve the hyperparameter.
