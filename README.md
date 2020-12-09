@@ -221,6 +221,8 @@ The hyperdrive workflow diagram is seen below:
 
 The automl pipeline produced its best performing model known as Voting Ensemble at the 33rd iteration of the experiment with an AUC_weighted value of 0.9496099681514523, it is a useful technique which comes especially handy when a single model shows some kind of bias. The Voting Ensemble estimates multiple base models and uses voting to combine the individual predictions to arrive at the final ones.
 
+![iteration](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/iteration%20auto%20ml.PNG)
+
 The AutoML workflow diagram is seen below:
 
 ![automl](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/automl%20workflow.png)
