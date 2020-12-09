@@ -227,42 +227,100 @@ The automl pipeline produced its best performing model known as Voting Ensemble 
 #### Pipeline architecture
 
 •	Import the dataset using the tabular dataset factory
+
 from azureml.data.dataset_factory import TabularDatasetFactory
 
 src = https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv
+
+
 ds= TabularDatasetFactory.from_delimited_files(src)
 
 •	Use the clean data function to clean your data.
-from 	train import clean_data
+
+from train import clean_data
+
+
 x, y = clean_data(ds)
 
 
 •	Split the dataset
 
+
 from sklearn.model_selection import train_test_split
+
 
 x_train, x_test, y_train, y_test=train_test_split(x, y, train_size=0.8, test_size=0.2, random_state=42)
 
 
 •	Combine the training datasets
+
 import pandas as pd
 
 train_data = pd.concat((x_train,y_train),axis=1)
 
+•	Passing the following parameters to the AutoML Config:
 
-## Hyperparameters
+    experiment_timeout_minutes=30,
 
-experiment_timeout_minutes=30,
     task='classification',
+    
     primary_metric='AUC_weighted',
+    
     training_data=train_data,
+    
     label_column_name='y',
+    
     n_cross_validations=5,
+    
     max_concurrent_iterations=4,
+    
     max_cores_per_iteration=4,
+    
     enable_early_stopping=True,
+    
     enable_voting_ensemble=True,
+    
     featurization='auto')
+
+
+•	Submit the automl run
+
+automl_run = exp.submit(automl_config, show_output=True)
+
+
+RunDetails(automl_run).show()
+
+
+automl_run.wait_for_completion(show_output=True)
+
+•	Retrieve the best run
+
+best_run, fitted_model = automl_run.get_output()
+
+
+print(best_run)
+
+
+print(fitted_model)
+
+best_run_metrics = best_run.get_metrics()
+
+
+for metric_name in best_run_metrics:
+
+
+    metric = best_run_metrics[metric_name]
+    
+    
+    print(metric_name)
+    
+    
+    print(metric)
+
+
+•	Save the automl model
+
+best_run.register_model(model_name='automl_model',model_path='/outputs',properties={'AUC_weighted':best_run_metrics['AUC_weighted']},tags={'Training context':'Auto ML'})
 
 
 ![iteration](https://github.com/OREJAH/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/iteration%20auto%20ml.PNG)
